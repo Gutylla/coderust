@@ -6,9 +6,9 @@ def factorial(n)
 end
 
 def find_kth_permutation(v, k, result=[])
-  p '*'*100
-  p Time.now
-  p "k : #{k}"
+  # p '*'*100
+  # p Time.now
+  # p "k : #{k}"
   if (!v || v.length == 0)
     return
   end
@@ -16,13 +16,13 @@ def find_kth_permutation(v, k, result=[])
   n = v.length
 
   count = factorial(n - 1)
-  p "count : #{count}"
+  # p "count : #{count}"
   selected = ((k-1) / count).floor
-  p "selected : #{selected}"
+  # p "selected : #{selected}"
   result << v[selected]
   v.delete_at(selected)
-  p "result : #{result}"
-  p "v : #{v}"
+  # p "result : #{result}"
+  # p "v : #{v}"
   k = k - (count * selected)
 
   find_kth_permutation(v, k, result)
@@ -30,4 +30,4 @@ def find_kth_permutation(v, k, result=[])
   result
 end
 
-p find_kth_permutation([1,2,3,4], 8)
+p find_kth_permutation([1,2,3,4,5,6,7,8,9], 4)
