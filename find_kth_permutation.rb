@@ -30,4 +30,5 @@ def find_kth_permutation(v, k, result=[])
   result
 end
 
-p find_kth_permutation([1,2,3,4,5,6,7,8,9], 4)
+
+p find_kth_permutation([1,2,3], 3)

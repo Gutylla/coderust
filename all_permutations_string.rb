@@ -1,12 +1,13 @@
 require 'benchmark/ips'
 
-def string_permutations(str, elmt='', result=[])
+def string_permutations(str, elmt=[], result=[])
   if str.length == 0
-    result << elmt
-  else
-    str.each_char do |char|
-      string_permutations(str.chars.reject {|x| x == char}.join, elmt + char, result)
-    end
+    result << elmt.dup.join('')
+  end
+  str.each_char do |char|
+    t = elmt.dup
+    t << char
+    string_permutations(str.chars.reject {|x| x == char}.join, t , result)
   end
   result
 end
@@ -61,11 +62,11 @@ end
 # Benchmark.ips do |x|
 
 #   x.report("recursive") do |times|
-#     string_permutations('123456')
+p string_permutations('123')
 #   end
 
 #   x.report("iterative") do |times|
-p per('abc')
+# p per('abc')
 #   end
 
 #   x.report("inbuilt") do |times|

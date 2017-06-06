@@ -20,4 +20,4 @@ def all_sum(target_sum, current_sum=0, index=1, current_set=[], result=[])
 
 end
 
-p all_sum(5)
+p all_sum(4)
