@@ -7,12 +7,12 @@ def mapDecoding(message)
 
   while i >= 0
 
-    current_char    = message[i].to_i
-    adjact_char     = message[i..i+1].to_i
+    one_digit    = message[i].to_i
+    both_digits     = message[i..i+1].to_i
 
-    current_count   = (current_char == 0) ? 0 : total
+    current_count   = (one_digit == 0) ? 0 : total
 
-    current_count  += prev_total if i < n-1 && current_char > 0 && adjact_char < 27
+    current_count  += prev_total if i < n-1 && one_digit > 0 && both_digits < 27
 
     prev_total      = total
     total           = current_count
