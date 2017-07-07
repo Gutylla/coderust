@@ -1,25 +1,37 @@
-def findLongestSubarrayBySum(s, arr, cs=[], r=[])
+def findLongestSubarrayBySum(sum, arr)
+  curr_sum = arr[0]
+  start = 0
+  n = arr.size
+  r = nil
 
-  if cs.inject(:+) ==  s
-    r << cs.dup
-    return
-  end
-
-  arr.size.times do |i|
-    ts = cs
-    ts << arr[i]
-
-    if ts.inject(:+) <= s
-      findLongestSubarrayBySum(s, arr[i+1..-1], ts, r)
+  (1..n).map do |i|
+    while (curr_sum > sum && start < i-1)
+      curr_sum = curr_sum - arr[start]
+      start += 1
     end
 
+    if (curr_sum == sum)
+      p 'hello'
+      if r
+        p '----------'
+        p (r.last-r.first) 
+        p (start+1 - i)
+        r = [start+1, i] if (r.last-r.first) < (i-start)
+      else
+        r = [start+1, i]
+      end
+    end
+
+    curr_sum = curr_sum + arr[i] if (i < n)
   end
 
-  r
+  r || [-1]
 end
+
+
 
 
 s = 12
 arr = [1, 2, 3, 7, 5]
-
-findLongestSubarrayBySum(s, arr)
+p arr
+p findLongestSubarrayBySum(s, arr)
