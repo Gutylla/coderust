@@ -23,6 +23,7 @@ def number_to_words(num)
     i += 1
 
   end
+
   words.reverse.join(' ').strip
 end
 

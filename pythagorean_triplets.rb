@@ -1,8 +1,7 @@
 def pythagorean_triplets(array)
 
   array.sort!
-  p '*'*100
-  p array
+
   result = []
 
   array.each_with_index do |element, index|
@@ -28,14 +27,6 @@ def pythagorean_triplets(array)
       end
 
       sum = (lower*lower) + (higher*higher) - (element*element)
-
-      if sum == 0
-        p '**--'*20
-        p "element : #{element}"
-        p "lower : #{lower}"
-        p "higher : #{higher}"
-        p "#{lower*lower} + #{higher*higher} - #{element*element} = #{sum}"
-      end
 
       if sum == 0
         result << [lower, higher, element]
