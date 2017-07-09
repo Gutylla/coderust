@@ -25,6 +25,6 @@ def longest_consecutive(nums)
   max_length
 end
 
-p longest_consecutive [100, 4, 200, 1, 3, 2]
+p longest_consecutive [4,7,1,2,3]
 
-p longest_consecutive [100, 4, 200, 1, 5]
+# p longest_consecutive [100, 4, 200, 1, 5]

@@ -1,16 +1,25 @@
 require 'benchmark/ips'
 
-def string_permutations(str, elmt=[], result=[])
-  if str.length == 0
-    result << elmt.dup.join('')
+def stringPermutations(nums)
+  nums = nums.chars
+  if nums.empty?
+    return [[]]
+  else
+    res = []
+    nums.each_with_index do |e, i|
+      rest = nums[0, i] + nums[i + 1..-1]
+      rest_perms = stringPermutations(rest.join(''))
+      rest_perms.each do |perm|
+        perm.push(e)
+      end
+      res += rest_perms
+    end
+    res
   end
-  str.each_char do |char|
-    t = elmt.dup
-    t << char
-    string_permutations(str.chars.reject {|x| x == char}.join, t , result)
-  end
-  result
+
+  res
 end
+
 
 def fact(n)
   return 1 if n == 0 || n == 1
@@ -61,18 +70,18 @@ end
 
 # Benchmark.ips do |x|
 
-#   x.report("recursive") do |times|
-p string_permutations('123')
-#   end
+# x.report("recursive") do |times|
+p stringPermutations('ABA').map {|x| x.join }
+# end
 
-#   x.report("iterative") do |times|
-# p per('abc')
-#   end
+# x.report("iterative") do |times|
+# p per('ABA')
+# end
 
-#   x.report("inbuilt") do |times|
-#     '123456'.chars.permutation.map(&:join)
-#   end
+# x.report("inbuilt") do |times|
+# p 'ABA'.chars.permutation.map(&:join)
+# end
 
-#   x.compare!
+# x.compare!
 
 # end
