@@ -1,21 +1,32 @@
-def string_segementation(string, dictionary, level = 0)
+def string_segementation(string, dictionary, results={}, level=0)
+  f = Array.new(string.size+1)
+  f[0] = true
 
-  0.upto(string.length-1) do |i|
+  i = 0
+  while i <= string.length
+    j = 0
+    while j < i
 
-    p level.to_s +  ' -> ' + string[0..i]
+      if f[j] && dictionary.include?(string[j...i])
+        dictionary.delete(string[j...i])
+        f[i] = true
+        results[level] ||= []
+        results[level] << string[j...i]
+      end
 
-    if dictionary.include?(string[0..i])
-      return true if string[i+1..-1].empty?
-      return true if string_segementation(string[i+1..-1], dictionary, level+1)
+      j += 1
     end
 
+    level += 1
+    i += 1
   end
 
-  false
+  f[string.length]
+  results
 end
 
 
-d = %w(a apple pear pier pie p p l)
-s = 'applepieaaaaa'
+d = ["cat", "cats", "and", "sand", "dog"]
+s = 'catsanddog'
 
 p string_segementation(s, d)

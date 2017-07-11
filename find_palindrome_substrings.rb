@@ -7,7 +7,7 @@ def find_palindrome_substrings(string)
     check_palindrome(string, i, i+1, results) # even palindromes
   end
 
-  p results
+  p results.uniq
 
 end
 
@@ -27,4 +27,4 @@ end
 
 find_palindrome_substrings("aabbbaa")
 
-find_palindrome_substrings("soifjoijfoisdhfiushfisjhjnjhnkjnkjnkjnjhbuyvutybniouodshfjoisjfijsiofhiuojhgyutgyihuojk")
+find_palindrome_substrings("iuytyeotyeotyiureytiurey")

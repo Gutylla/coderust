@@ -35,4 +35,4 @@ def num_distinct(s, t)
   dp[m][n]
 end
 
-p num_distinct('ccc', 'c')
+p num_distinct('ashish', 'ih')

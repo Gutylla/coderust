@@ -20,7 +20,7 @@ def letter_combinations(digits)
     ans = tmp
 
   end
-  
+
   ans
 end
 

@@ -4,8 +4,8 @@ def longestIncreasingSubsequence(arr)
 
   (1..n-1).map do |i|
     i.times do |j|
-      if arr[i] > arr[j]
-        lis[i] = [lis[j] + 1, lis[i]].max
+      if arr[i] > arr[j] && lis[j]+1 > lis[i]
+        lis[i] = lis[j] + 1
       end
     end
   end

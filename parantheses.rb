@@ -1,35 +1,23 @@
 def parentheses(n)
 
   results = []
-  helper(results, n, 0, 0, [])
-
+  helper(results, n, n, '')
   results
 
 end
 
 
-def helper(results, n, left, right, temp)
-  p '*'*100
-  p left
-  p right
-  p temp.dup.join('')
+def helper(results, left, right, cs)
 
-  if right == n && left == n
-    results << temp.dup.join('')
+  if right == 0 && left == 0
+    results << cs.dup
+    return
   end
 
-  if left < n
-    temp.push('{')
-    helper(results, n, left+1, right, temp)
-    temp.pop
-  end
+  helper(results, left-1, right, cs+'{') if left > 0
+  helper(results, left, right-1, cs+'}') if right > left
 
-  if right < left
-    temp.push('}')
-    helper(results, n, left, right+1, temp)
-    temp.pop
-  end
-
+  results
 end
 
 

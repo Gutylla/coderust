@@ -1,10 +1,25 @@
-def get_fibonacci_rec(n)
+def get_fibonacci_rec(n, memo={})
 
   if (n == 0 || n == 1)
     return n
   end
 
-  return get_fibonacci_rec(n - 1) + get_fibonacci_rec(n - 2)
+  m1 = nil
+  m2 = nil
+
+  # if memo[n-1]
+  #   m1 = memo[n-1]
+  # else
+    m1 = get_fibonacci_rec(n - 1, memo)
+  # end
+
+  # if memo[n-2]
+  #   m2 = memo[n-2]
+  # else
+    m2 = get_fibonacci_rec(n - 2, memo)
+  # end
+
+  return  m1 + m2
 end
 
 def get_fibonacci(n)

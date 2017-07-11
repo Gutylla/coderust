@@ -4,8 +4,8 @@ def findLongestSubarrayBySum(sum, arr)
   n = arr.size
   r = []
 
-  n.times do |i|
-    i += 1
+  (1..n).map do |i|
+
     while (curr_sum > sum && start < i-1)
       curr_sum = curr_sum - arr[start]
       start += 1

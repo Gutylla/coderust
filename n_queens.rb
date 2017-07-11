@@ -2,7 +2,7 @@ def is_valid_move(proposed_row, proposed_col, current)
 
   proposed_row.times do |i|
     diagonal_offset = proposed_row - i
-    return false if (current[i] == proposed_col || current[i] == proposed_col - diagonal_offset || current[i] == proposed_col + diagonal_offset)
+    return false if (current[i] == proposed_col || (current[i] - proposed_col).abs == diagonal_offset.abs)
   end
 
   true
